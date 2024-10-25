@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Celebration</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffcccb, #ffe4e1); /* Gradient background */
+            text-align: center;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1 {
+            color: #ff69b4; /* Heading color */
+            font-size: 4rem; /* Heading font size */
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.6); /* Text shadow */
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #555; /* Text color */
+            margin-top: 10px; /* Margin from top */
+        }
+
+        .box {
+            margin: 20px auto;
+            padding: 20px;
+            border: 3px solid #ff69b4; /* Box border */
+            border-radius: 15px; /* Rounded corners */
+            background-color: rgba(255, 105, 180, 0.2); /* Box background */
+            width: 80%; /* Box width */
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3); /* Box shadow */
+            transition: transform 0.3s; /* Animation */
+        }
+
+        .box:hover {
+            transform: scale(1.05); /* Scale on hover */
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow multiple lines */
+            margin-top: 20px; /* Margin on top */
+        }
+
+        img {
+            max-width: 200px; /* Thumbnail size */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 15px; /* Rounded corners */
+            margin: 10px; /* Margin between images */
+            cursor: pointer; /* Change cursor on hover */
+            transition: transform 0.2s; /* Animation */
+        }
+
+        img:hover {
+            transform: scale(1.05); /* Scale on hover */
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none; /* Hide lightbox by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Lightbox background */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Make lightbox on top */
+        }
+
+        .lightbox img {
+            max-width: 90%; /* Lightbox image size */
+            max-height: 90%; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer; /* Change cursor */
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer; /* Change cursor */
+        }
+
+        .prev {
+            left: 20px; /* Previous button position */
+        }
+
+        .next {
+            right: 20px; /* Next button position */
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #777; /* Footer text color */
+        }
+
+        .credit {
+            font-size: 0.9rem; /* Credit text size */
+            color: #555; /* Credit text color */
+            margin-top: 20px; /* Margin on top */
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <p>Scroll down ⚡⛱🔽</p>
+    <div class="box">
+        🎉 Happy Birthday นะไอหนุ่ม ขอให้มีสิ่งดีๆ เข้ามาในชีวิต 🎂
+    </div>
+
+    <!-- Image gallery -->
+    <div class="gallery">
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462554986_3422985071339786_874767859135019493_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Lsg_hGTUQDAQ7kNvgHxBOhD&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&_nc_gid=A3eK_MJy9pz99IDyA33fOdP&oh=03_Q7cD1QFi2bzIqcu6LFq9RX_p6xNQA5f8gaiD26r1r7K6-JEjPw&oe=6742A346" alt="Image 1" class="lightbox-trigger">  
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462558317_1100775478051006_7829639409583786390_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_ohc=cGeojVuHi-QQ7kNvgEikSc7&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&_nc_gid=A_UtnVhcHncKlC31WEU-TSv&oh=03_Q7cD1QErJTUl_AYpyG3maaGghjBvS1jAZIbZUUHB4uFQ712Ydw&oe=6742795B" alt="Image 2" class="lightbox-trigger">  
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462547820_944242211086084_531876855623857713_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0024fc&_nc_ohc=4RcA9HatsnYQ7kNvgEy6Jlc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&_nc_gid=AmbN7mSUeqxDW2si-X5O8A5&oh=03_Q7cD1QGxDPh3JYYk37MkcfRTR1jwOX_0IKlo9CzLWOvhv0FMjA&oe=67427BE9" alt="Image 3" class="lightbox-trigger">  
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close" id="close">&times;</span>
+        <img id="lightboxImage" src="" alt="">
+        <div class="nav prev" id="prev">&lt;</div>
+        <div class="nav next" id="next">&gt;</div>
+    </div>
+
+    <div class="footer">✨ ขอให้วันเกิดปีนี้เป็นปีที่ดีที่สุดนะ! ✨</div>
+    <div class="credit">Coding by Korn</div> <!-- Credit text -->
+
+    <script>
+        const images = document.querySelectorAll('.lightbox-trigger');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const close = document.getElementById('close');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+
+        let currentIndex = 0;
+
+        images.forEach((image, index) => {
+            image.onclick = function() {
+                currentIndex = index; // Set current image index
+                showLightbox();
+            }
+        });
+
+        function showLightbox() {
+            lightbox.style.display = 'flex'; // Show lightbox
+            lightboxImage.src = images[currentIndex].src; // Set lightbox image source
+        }
+
+        close.onclick = function() {
+            lightbox.style.display = 'none'; // Hide lightbox
+        }
+
+        lightbox.onclick = function() {
+            lightbox.style.display = 'none'; // Hide lightbox when clicking outside image
+        }
+
+        prev.onclick = function() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Go to previous image
+            lightboxImage.src = images[currentIndex].src; // Update image source
+        }
+
+        next.onclick = function() {
+            currentIndex = (currentIndex + 1) % images.length; // Go to next image
+            lightboxImage.src = images[currentIndex].src; // Update image source
+        }
+    </script>
+</body>
+</html>
